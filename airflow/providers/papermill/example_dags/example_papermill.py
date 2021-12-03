@@ -80,6 +80,7 @@ with DAG(
         input_nb=os.path.join(os.path.dirname(os.path.realpath(__file__)), "input_notebook.ipynb"),
         output_nb="/tmp/out-{{ execution_date }}.ipynb",
         parameters={"msgs": "Ran from Airflow at {{ execution_date }}!"},
+        kernel_name="python4",
     )
 
     run_this >> check_notebook(inlets=AUTO, execution_date="{{ execution_date }}")
